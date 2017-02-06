@@ -1,0 +1,4 @@
+.idea/
+*.DS_Store
+*.nginx_conf
+node_modules/

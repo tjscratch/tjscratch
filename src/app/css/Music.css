@@ -1,0 +1,88 @@
+@font-face {
+    font-family: armalite_rifle;
+    src: url(../fonts/armalite_rifle.ttf);
+}
+@font-face {
+    font-family: beaumarchaisc;
+    src: url(../fonts/beaumarchaisc.ttf);
+}
+.slogan{
+    font-family: armalite_rifle;
+    font-size: 72px;
+    text-align: center;
+    /*font-weight: bold;*/
+    color: #FFFFFF;
+    padding-top: 10px;
+}
+.nav-tabs, .tab-content{
+    width: 1110px;
+    margin: 25px auto;
+
+}
+ul>li>a{
+    color: #FFFFFF;
+}
+.nav>li>a {
+    padding: 10px 13px;
+}
+
+#NavTab .active {
+    background-color: inherit;
+    text-decoration: inherit;
+}
+.tab-content .active {
+    background-color: inherit;
+    text-decoration: inherit;
+}
+.tab-content {
+
+}
+.nav-tabs{
+    font-size: 26.5px;
+    /*font-weight: bold;*/
+    font-family: armalite_rifle;
+}
+[class*="col-"] {
+    color: #E4E4E4;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    /*padding-top: 15px;*/
+    /*margin: 40px auto;*/
+    font-family: armalite_rifle, beaumarchaisc;
+    width: 1110px;
+    height: 100%;
+    float: none;
+    text-align:justify;
+    font-size: 25px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 6px 50px 1px rgba(117,117,117,0.86);
+    -moz-box-shadow: 0px 6px 50px 1px rgba(117,117,117,0.86);
+    box-shadow: 0px 6px 50px 1px rgba(117,117,117,0.86);
+}
+#groupname{
+    font-size: 60px;
+    background-color: #A2ABB4;
+    height: 100px;
+    border-radius: 5px;
+    padding-top: 15px;
+    text-align: center;
+    /* -webkit-box-shadow
+    : 0px 6px 50px 1px rgba(117,117,117,0.86);
+     -moz-box-shadow: 0px 6px 50px 1px rgba(117,117,117,0.86);
+     box-shadow: 0px 6px 50px 1px rgba(117,117,117,0.86);*/
+}
+img{
+    width:500px;
+    float:left;
+    margin-right: 10px;
+}
+#music{
+    background: url("/app/content/images/Sleetgrout.jpg");
+    border: solid 3px;
+    border-radius: 5px;
+    color: snow;
+    margin: 20px 20px;
+    padding: 20px;
+}
+#music p{
+    padding-left: 60px;
+}
