@@ -61,7 +61,7 @@
 	
 	var _Mainpage = __webpack_require__(/*! ./js/Mainpage */ 233);
 	
-	var _Music = __webpack_require__(/*! ./js/Music */ 236);
+	var _Music = __webpack_require__(/*! ./js/Music */ 272);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -27281,11 +27281,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Header = __webpack_require__(/*! ./Header */ 234);
+	__webpack_require__(/*! ../css/App.css */ 234);
 	
-	var _Header2 = _interopRequireDefault(_Header);
+	var _Header = __webpack_require__(/*! ./Header */ 238);
 	
-	var _Maincontent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./Maincontent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _Maincontent = __webpack_require__(/*! ./Maincontent */ 243);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -27294,8 +27294,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	// import '../css/App.css';
-	
 	
 	var Mainpage = exports.Mainpage = function (_React$Component) {
 	    _inherits(Mainpage, _React$Component);
@@ -27312,19 +27310,377 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_Header2.default, null),
+	                _react2.default.createElement(_Header.Header, null),
 	                _react2.default.createElement(_Maincontent.MainContent, null)
 	            );
 	        }
 	    }]);
 	
 	    return Mainpage;
-	}(_react2.default.Component());
-	
-	;
+	}(_react2.default.Component);
 
 /***/ },
 /* 234 */
+/*!*****************************!*\
+  !*** ./src/app/css/App.css ***!
+  \*****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./App.css */ 235);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 237)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./App.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./App.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 235 */
+/*!********************************************!*\
+  !*** ./~/css-loader!./src/app/css/App.css ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 236)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".App {\n  text-align: center;\n}\n\n.App-logo {\n  animation: App-logo-spin infinite 20s linear;\n  height: 80px;\n}\n\n.App-header {\n  background-color: #222;\n  height: 150px;\n  padding: 20px;\n  color: white;\n}\n\n.App-intro {\n  font-size: large;\n}\n\n@keyframes App-logo-spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 236 */
+/*!**************************************!*\
+  !*** ./~/css-loader/lib/css-base.js ***!
+  \**************************************/
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 237 */
+/*!*************************************!*\
+  !*** ./~/style-loader/addStyles.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+	
+	module.exports = function(list, options) {
+		if(true) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+	
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+	
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+	
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+	
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+	
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+	
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+	
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		var blob = new Blob([css], { type: "text/css" });
+	
+		var oldSrc = linkElement.href;
+	
+		linkElement.href = URL.createObjectURL(blob);
+	
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
+/* 238 */
 /*!******************************!*\
   !*** ./src/app/js/Header.js ***!
   \******************************/
@@ -27343,6 +27699,8 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	__webpack_require__(/*! ../css/Header.css */ 239);
+	
 	var _reactRouter = __webpack_require__(/*! react-router */ 178);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -27352,8 +27710,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	// import '../css/Header.css';
-	
 	
 	var Header = exports.Header = function (_React$Component) {
 	    _inherits(Header, _React$Component);
@@ -27438,11 +27794,74 @@
 	;
 
 /***/ },
-/* 235 */,
-/* 236 */
-/*!*****************************!*\
-  !*** ./src/app/js/Music.js ***!
-  \*****************************/
+/* 239 */
+/*!********************************!*\
+  !*** ./src/app/css/Header.css ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./Header.css */ 240);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 237)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./Header.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./Header.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 240 */
+/*!***********************************************!*\
+  !*** ./~/css-loader!./src/app/css/Header.css ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 236)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "@font-face {\n    font-family: armalite_rifle;\n    src: url(" + __webpack_require__(/*! ../fonts/armalite_rifle.ttf */ 241) + ");\n}\n@font-face {\n    font-family: beaumarchaisc;\n    src: url(" + __webpack_require__(/*! ../fonts/beaumarchaisc.ttf */ 242) + ");\n}\nbody{\n    margin: 0;\n    padding: 0;\n    background: #000;\n}\n.main-header{\n    background:linear-gradient(to bottom,#2f2f2f 0,#1c1c1c 100%);\n    position: fixed;\n    top: 0;\n    width: 100%;\n    z-index: 9999;\n}\n.main_menu{\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n    justify-content: center;\n    align-items: center;\n    margin: 0 auto;\n    padding: 0;\n    max-width: 1200px;\n}\n.main_menu>li{\n    list-style: none;\n    padding: 1% 4%;\n    color: white;\n    text-align: center;\n    flex-shrink: 1;\n}\n.main_menu>li>a{\n    text-decoration: none;\n    font-family: beaumarchaisc;\n    font-weight: bold;\n    font-size: 2rem;\n    color:#fefefe;\n    /*padding: 10px 15px;*/\n}\n@-moz-document url-prefix() {\n    .main_menu>li{\n        padding: 13px 50px;\n    }\n}\n@media screen and (max-width: 1024px) {\n    .main_menu>li {padding: 1% 3%;}\n}\n@media screen and (max-width: 729px) {\n    .main_menu>li {padding: 1% 2%;}\n}\n@media screen and (max-width: 613px) {\n    .main_menu>li {padding: 1% 1%;}\n}\n@media screen and (max-width: 530px){\n.main_menu>li>a {font-size: 1.9rem;}\n}\n@media screen and (max-width: 503px){\n    .main_menu>li>a {font-size: 1.8rem;}\n}\n@media screen and (max-width: 477px){\n    .main_menu>li>a {font-size: 1.7rem;}\n}\n@media screen and (max-width: 450px){\n    .main_menu>li>a {font-size: 1.6rem;}\n}\n@media screen and (max-width: 424px){\n    .main_menu>li>a {font-size: 1.5rem;}\n}\n@media screen and (max-width: 397px){\n    .main_menu>li>a {font-size: 1.4rem;}\n}\n@media screen and (max-width: 371px){\n    .main_menu>li>a {font-size: 1.3rem;}\n}\n@media screen and (max-width: 344px){\n    .main_menu>li>a {font-size: 1.2rem;}\n}\n@media screen and (max-width: 320px){\n    .main_menu>li>a {font-size: 1.1rem;}\n}", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 241 */
+/*!******************************************!*\
+  !*** ./src/app/fonts/armalite_rifle.ttf ***!
+  \******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "b61a58c2e057745a178d58278275216f.ttf";
+
+/***/ },
+/* 242 */
+/*!*****************************************!*\
+  !*** ./src/app/fonts/beaumarchaisc.ttf ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "1d36566a2822adc780ec104576256e86.ttf";
+
+/***/ },
+/* 243 */
+/*!***********************************!*\
+  !*** ./src/app/js/Maincontent.js ***!
+  \***********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27450,195 +27869,1817 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.MainContent = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Header = __webpack_require__(/*! ./Header */ 234);
+	var _Articles = __webpack_require__(/*! ./xhr/Articles */ 244);
+	
+	__webpack_require__(/*! ../css/Maincontent.css */ 270);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	// import 'bootstrap/dist/css/bootstrap.css';
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var MusicContent = function MusicContent() {
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Articles = function Articles(props) {
+	    function playMusic() {
+	        if (document.getElementById("2").className === "article_right") {
+	            document.getElementById("2").src = "/app/content/images/cyberdj_240x320.gif";
+	            document.getElementById("2").className = "article_right_gif";
+	            document.getElementById("music").play();
+	        } else if (document.getElementById("2").className === "article_right_gif") {
+	            document.getElementById("2").className = "article_right";
+	            document.getElementById("2").src = "/app/content/images/cyberdj_240x320.png";
+	            document.getElementById("music").pause();
+	        }
+	    }
 	    return _react2.default.createElement(
 	        'div',
-	        { className: 'music_container' },
+	        { className: 'article_container' },
+	        _react2.default.createElement('img', { id: props.Id, className: props.className, alt: 'articleimg', src: props.imageUrl, role: 'presentation', onClick: playMusic }),
 	        _react2.default.createElement(
-	            'h1',
-	            { className: 'slogan' },
-	            'Choose your favorite style!'
-	        ),
-	        _react2.default.createElement(
-	            'ul',
-	            { className: 'nav nav-tabs', id: 'NavTab' },
-	            _react2.default.createElement(
-	                'li',
-	                { role: 'presentation', className: 'active' },
-	                _react2.default.createElement(
-	                    'a',
-	                    { href: '#Aggrotech', role: 'tab', 'data-toggle': 'tab' },
-	                    'Aggrotech'
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'li',
-	                { role: 'presentation', className: 'active' },
-	                _react2.default.createElement(
-	                    'a',
-	                    { href: '#Aggrotech', role: 'tab', 'data-toggle': 'tab' },
-	                    'Aggrotech'
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'li',
-	                { role: 'presentation' },
-	                _react2.default.createElement(
-	                    'a',
-	                    { href: '#IndustrialDance', role: 'tab', 'data-toggle': 'tab' },
-	                    'Industrial Dance'
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                    'a',
-	                    { href: '#IndustrialMetal', 'data-toggle': 'tab' },
-	                    'Industrial Metal'
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                    'a',
-	                    { href: '#CyberDance', 'data-toggle': 'tab' },
-	                    'Cyber Dance'
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                    'a',
-	                    { href: '#RapCore', 'data-toggle': 'tab' },
-	                    'Rap Core'
-	                )
-	            )
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'tab-content' },
-	            _react2.default.createElement(
-	                'div',
-	                { id: 'Aggrotech', className: 'tab-pane fade in active' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-xs-12 container-fluid' },
-	                    _react2.default.createElement(
-	                        'h1',
-	                        { id: 'groupname' },
-	                        'Sleetgrout'
-	                    ),
-	                    _react2.default.createElement('img', { src: 'https://img1.goodfon.ru/wallpaper/big/9/36/sleetgrout-try-to-die-ebm.jpg', role: 'presentation' }),
-	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        '\u0418\u0441\u0442\u043E\u0440\u0438\u044F \u0440\u043E\u0441\u0442\u043E\u0432\u0441\u043A\u043E\u0433\u043E \u0438\u043D\u0434\u0430\u0441\u0442\u0440\u0438\u0430\u043B-\u043F\u0440\u043E\u0435\u043A\u0442\u0430 Sleetgrout \u0431\u0435\u0440\u0451\u0442 \u043D\u0430\u0447\u0430\u043B\u043E \u0432 2003 \u0433\u043E\u0434\u0443, \u043A\u043E\u0433\u0434\u0430 \u0432\u043E\u043A\u0430\u043B\u0438\u0441\u0442 \u0438 \u043E\u0441\u043D\u043E\u0432\u0430\u0442\u0435\u043B\u044C \u043F\u0440\u043E\u0435\u043A\u0442\u0430 \u0424\u0440\u0438\u0434\u0440\u0438\u0445 \u0440\u0435\u0448\u0438\u043B \u0430\u043A\u0442\u0438\u0432\u0438\u0437\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0441\u0432\u043E\u0439 \u0442\u0432\u043E\u0440\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u043E\u0442\u0435\u043D\u0446\u0438\u0430\u043B. Regenengel - \u0442\u0430\u043A \u043D\u0430\u0437\u044B\u0432\u0430\u043B\u0441\u044F \u0432 \u0442\u043E \u0432\u0440\u0435\u043C\u044F \u0435\u0433\u043E one-man-\u043F\u0440\u043E\u0435\u043A\u0442, \u0431\u044B\u043B \u0441\u043E\u0437\u0434\u0430\u043D \u0434\u043B\u044F \u0432\u043E\u043F\u043B\u043E\u0449\u0435\u043D\u0438\u044F \u0432 \u0436\u0438\u0437\u043D\u044C \u043C\u0443\u0437\u044B\u043A\u0430\u043B\u044C\u043D\u044B\u0445 \u0438\u0434\u0435\u0439, \u043B\u0435\u0436\u0430\u0449\u0438\u0445 \u0432 \u043F\u043B\u043E\u0441\u043A\u043E\u0441\u0442\u0438 industrial/ambient, \u0438 \u043F\u0435\u0440\u0432\u0430\u044F \u043A\u043E\u043D\u0446\u0435\u0440\u0442\u043D\u0430\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0430 \u0424\u0440\u0438\u0434\u0440\u0438\u0445\u0430 \u0431\u044B\u043B\u0430 \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0430 \u043D\u0430 \u043E\u0434\u043D\u043E\u0439 \u0438\u0437 \u0440\u043E\u0441\u0442\u043E\u0432\u0441\u043A\u0438\u0445 \u0433\u043E\u0442\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u0432\u0435\u0447\u0435\u0440\u0438\u043D\u043E\u043A \u0438\u043C\u0435\u043D\u043D\u043E \u043F\u043E\u0434 \u044D\u0442\u0438\u043C \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435\u043C. \u0413\u0440\u0443\u043F\u043F\u0430 Sleetgrout \u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043B\u0430\u0441\u044C \u0432 \u043A\u043E\u043D\u0446\u0435 2005 \u0433\u043E\u0434\u0430. \u0421\u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u043D\u043E \u0441 Dark-World.ru. \u0415\u0449\u0435 \u0434\u043E \u0432\u044B\u0445\u043E\u0434\u0430 \u0434\u0435\u0431\u044E\u0442\u043D\u043E\u0439 \u043F\u043B\u0430\u0441\u0442\u0438\u043D\u043A\u0438 \u0433\u0440\u0443\u043F\u043F\u0430 \u0443\u0441\u043F\u0435\u043B\u0430 \u043F\u0435\u0440\u0435\u043C\u0438\u043A\u0448\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0437\u0430\u043F\u0430\u0434\u043D\u044B\u0445 \u0438\u0441\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u0435\u0439 (Mechanical Moth, Sinmasters \u0438 Wynardtage), \u0430 \u0442\u0430\u043A\u0436\u0435 \u043F\u043E\u0443\u0447\u0430\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C \u0432 \u043D\u0435\u0441\u043A\u043E\u043B\u044C\u043A\u0438\u0445 \u0437\u0430\u0440\u0443\u0431\u0435\u0436\u043D\u044B\u0445 \u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0446\u0438\u044F\u0445. \u041B\u0430\u043D\u0434\u0448\u0430\u0444\u0442\u043D\u044B\u0435 \u043A\u043E\u043C\u043F\u043E\u0437\u0438\u0446\u0438\u0438 \u043D\u0430\u0448\u043B\u0438 \u0441\u0432\u043E\u0438\u0445 \u0446\u0435\u043D\u0438\u0442\u0435\u043B\u0435\u0439, \u043F\u043E\u043B\u043E\u0436\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0435 \u043E\u0442\u0437\u044B\u0432\u044B \u0437\u0430\u0441\u0442\u0430\u0432\u0438\u043B\u0438 \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C \u0440\u0430\u0437\u0432\u0438\u0442\u0438\u0435 \u0432 \u044D\u0442\u043E\u043C \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0438. \u041E\u0434\u043D\u0430\u043A\u043E \u043F\u043E\u0441\u043B\u0435 \u043D\u0435\u0441\u043A\u043E\u043B\u044C\u043A\u0438\u0445 \u0432\u044B\u0441\u0442\u0443\u043F\u043B\u0435\u043D\u0438\u0439, \u0443\u0436\u0435 \u043F\u0440\u0438 \u0443\u0447\u0430\u0441\u0442\u0438\u0438 \u0432\u043E\u0448\u0435\u0434\u0448\u0435\u0433\u043E \u0432 \u0441\u043E\u0441\u0442\u0430\u0432 \u0433\u0440\u0443\u043F\u043F\u044B \u0433\u0438\u0442\u0430\u0440\u0438\u0441\u0442\u0430, \u0431\u044B\u043B\u043E \u043F\u0440\u0438\u043D\u044F\u0442\u043E \u0440\u0435\u0448\u0435\u043D\u0438\u0435 \u043E \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u0438 \u0441\u0430\u0439\u0434-\u043F\u0440\u043E\u0435\u043A\u0442\u0430. \u0423\u0447\u0430\u0441\u0442\u043D\u0438\u043A\u0438 \u044D\u0442\u043E\u0433\u043E \u043D\u043E\u0432\u043E\u0433\u043E \u043C\u0443\u0437\u044B\u043A\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u0441\u0430\u043C\u043E\u0441\u0442\u043E\u044F\u0442\u0435\u043B\u044C\u043D\u043E \u0438\u0437\u0434\u0430\u043B\u0438 \u0441\u0438\u043D\u0433\u043B "Hiding Behind Thedoors", \u043D\u0430 \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u043A\u0440\u043E\u043C\u0435 \u043E\u0440\u0438\u0433\u0438\u043D\u0430\u043B\u044C\u043D\u043E\u0439 \u0432\u0435\u0440\u0441\u0438\u0438 \u043F\u0435\u0441\u043D\u0438 \u0432\u043E\u0448\u043B\u0438 \u0434\u0432\u0430 \u0440\u0435\u043C\u0438\u043A\u0441\u0430 \u043E\u0442 \u0440\u043E\u0441\u0442\u043E\u0432\u0441\u043A\u043E\u0433\u043E \u0436\u0435 IDM-\u043F\u0440\u043E\u0435\u043A\u0442\u0430 Insanity. \u0421 \u0442\u0435\u0447\u0435\u043D\u0438\u0435\u043C \u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443 \u043F\u0440\u0438\u0441\u043E\u0435\u0434\u0438\u043D\u0438\u043B\u0430\u0441\u044C \u043A\u043B\u0430\u0432\u0438\u0448\u043D\u0438\u0446\u0430 \u041C\u0430\u0440\u0433\u043E, \u0430 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 Regenengel \u0431\u044B\u043B\u043E \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u043E \u043D\u0430 Sleetgrout. \u0421\u0442\u0438\u043B\u044C \u0433\u0440\u0443\u043F\u043F\u044B \u043E\u043A\u043E\u043D\u0447\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u043B\u0441\u044F \u0438 \u0442\u0435\u043F\u0435\u0440\u044C \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u043E\u0431\u043E\u0437\u043D\u0430\u0447\u0435\u043D \u043A\u0430\u043A dark industrial/synth goth \u0441 \u043C\u043E\u0449\u043D\u044B\u043C \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u043C \u0438 \u0433\u0438\u0442\u0430\u0440\u043D\u044B\u043C \u0437\u0432\u0443\u0447\u0430\u043D\u0438\u0435\u043C. \u0412 2006 \u0433\u043E\u0434\u0443 \u0433\u0440\u0443\u043F\u043F\u0430 \u0432\u044B\u0441\u0442\u0443\u043F\u0438\u043B\u0430 \u043D\u0430 \u0440\u0430\u0437\u043E\u0433\u0440\u0435\u0432\u0435 \u0440\u043E\u0441\u0442\u043E\u0432\u0441\u043A\u043E\u0433\u043E \u0448\u043E\u0443 Das Ich \u0438 \u043F\u0440\u0438\u043D\u044F\u043B\u0430 \u0443\u0447\u0430\u0441\u0442\u0438\u0435 \u0432 \u043C\u0435\u0436\u0434\u0443\u043D\u0430\u0440\u043E\u0434\u043D\u043E\u043C \u0444\u0435\u0441\u0442\u0438\u0432\u0430\u043B\u0435 Radio Inferno V. \u0417\u0430 \u0432\u0440\u0435\u043C\u044F \u0441\u0432\u043E\u0435\u0433\u043E \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u043E\u0432\u0430\u043D\u0438\u044F \u0433\u0440\u0443\u043F\u043F\u0430 \u0443\u0441\u043F\u0435\u043B\u0430 \u043F\u043E\u0443\u0447\u0430\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C \u0432 \u043D\u0435\u0441\u043A\u043E\u043B\u044C\u043A\u0438\u0445 \u043C\u0435\u0436\u0434\u0443\u043D\u0430\u0440\u043E\u0434\u043D\u044B\u0445 \u0444\u0435\u0441\u0442\u0438\u0432\u0430\u043B\u044F\u0445 - Radio Inferno, \u0412\u043E\u0437\u0440\u043E\u0436\u0434\u0435\u043D\u0438\u0435, Synthetic Snow. \u0414\u0432\u0430\u0436\u0434\u044B \u043F\u0440\u043E\u0435\u043A\u0442 \u0441\u0430\u043F\u043F\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u043B Das Ich, \u0432\u044B\u0441\u0442\u0443\u043F\u0430\u043B \u043D\u0430 \u043E\u0434\u043D\u043E\u0439 \u0441\u0446\u0435\u043D\u0435 \u0441 Terminal Choice, Red Flag, Assemblage 23, Clan of Xymox. \u041F\u0440\u043E\u0435\u043A\u0442 \u0441\u043E\u0442\u0440\u0443\u0434\u043D\u0438\u0447\u0430\u0435\u0442 \u0438 \u043E\u0431\u043C\u0435\u043D\u0438\u0432\u0430\u0435\u0442\u0441\u044F \u0440\u0435\u043C\u0438\u043A\u0441\u0430\u043C\u0438 \u0441 \u0442\u0430\u043A\u0438\u043C\u0438 \u0433\u0440\u0443\u043F\u043F\u0430\u043C\u0438, \u043A\u0430\u043A Alien Vampires, Eden Synthetic Corps, Infra Black, Stidio-X, Wynardtage, [Nurzery Rhymes], The Synthetic Dream Foundation, Mechanical Moth \u0438 \u0434\u0440\u0443\u0433\u0438\u043C\u0438. \u0412 2009 \u0433\u043E\u0434\u0443 \u0433\u0440\u0443\u043F\u043F\u0430 \u0441\u0442\u0430\u043B\u0430 \u0445\u044D\u0434\u043B\u0430\u0439\u043D\u0435\u0440\u043E\u043C \u0444\u0435\u0441\u0442\u0438\u0432\u0430\u043B\u044F Dark Entries. \u0412 2010 \u0433\u043E\u0434\u0443 \u043A\u043E\u043C\u0430\u043D\u0434\u0430 \u0432\u044B\u043F\u0443\u0441\u0442\u0438\u043B\u0430 \u0434\u0435\u0431\u044E\u0442\u043D\u044B\u0439 \u0430\u043B\u044C\u0431\u043E\u043C, \u043E\u0437\u0430\u0433\u043B\u0430\u0432\u043B\u0435\u043D\u043D\u044B\u0439 "Principle Of Dark Electro", \u043F\u043E\u0441\u043B\u0435 \u043A\u043E\u0442\u043E\u0440\u043E\u0433\u043E \u043D\u0430\u0447\u0430\u043B\u0430\u0441\u044C \u0440\u0430\u0431\u043E\u0442\u0430 \u043D\u0430\u0434 \u0432\u0442\u043E\u0440\u044B\u043C \u043F\u043E\u043B\u043D\u043E\u0444\u043E\u0440\u043C\u0430\u0442\u043D\u0438\u043A\u043E\u043C, "We Had A Carnival". \u0412\u044B\u0445\u043E\u0434 \u0440\u0435\u043B\u0438\u0437\u0430 \u0441\u043E\u0441\u0442\u043E\u044F\u043B\u0441\u044F \u0432 2012 \u0433\u043E\u0434\u0443.'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: 'music' },
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'Sleetgrout - Try to Die'
-	                        ),
-	                        _react2.default.createElement('audio', { src: 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B7v9qcIiVdl5VUdJN1ZNbzBSeFE', controls: true, type: 'audio/mpeg' }),
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'Sleetgrout - We Had A Carnival'
-	                        ),
-	                        _react2.default.createElement('audio', { src: 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B7v9qcIiVdl5dkFsWjFQanE3NlU', controls: true, type: 'audio/mpeg' }),
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'Sleetgrout - sleetgrout-w-e '
-	                        ),
-	                        _react2.default.createElement('audio', { src: 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B7v9qcIiVdl5eHlaRU1NSnF5MGc', controls: true, type: 'audio/mpeg' }),
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'Sleetgrout - Feel Me Twice'
-	                        ),
-	                        _react2.default.createElement('audio', { src: 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B7v9qcIiVdl5aDlKRm9PQmY0Q3c', controls: true, type: 'audio/mpeg' })
-	                    )
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { id: 'IndustrialDance', className: 'tab-pane fade' },
-	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    'Menu 1'
-	                ),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { id: 'IndustrialMetal', className: 'tab-pane fade' },
-	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    'Menu 1'
-	                ),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { id: 'CyberDance', className: 'tab-pane fade' },
-	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    'Menu 1'
-	                ),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-	                )
-	            )
+	            'p',
+	            { className: 'articletext' },
+	            props.Text
 	        )
 	    );
 	};
-	// import '../css/Music.css';
 	
-	var Music = _react2.default.createClass({
-	    displayName: 'Music',
+	var MainContent = exports.MainContent = function (_React$Component) {
+	    _inherits(MainContent, _React$Component);
 	
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(_Header.Header, null),
-	            _react2.default.createElement(MusicContent, null)
-	        );
+	    function MainContent() {
+	        _classCallCheck(this, MainContent);
+	
+	        var _this = _possibleConstructorReturn(this, (MainContent.__proto__ || Object.getPrototypeOf(MainContent)).call(this));
+	
+	        _this.state = { article: [] };
+	        return _this;
 	    }
+	
+	    _createClass(MainContent, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var _this2 = this;
+	
+	            (0, _Articles.getArticles)().then(function (results) {
+	                _this2.setState({
+	                    article: results.data
+	                });
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'h1',
+	                    { className: 'maintext' },
+	                    'Music is the breath of life!'
+	                ),
+	                this.state.article.map(function (article) {
+	                    return _react2.default.createElement(Articles, { key: article.id, imageUrl: article.imageUrl, Text: article.Text, className: article.class, Id: article.id });
+	                }),
+	                _react2.default.createElement('audio', { id: 'music', src: '/app/content/Flatline.mp3', type: 'audio/mpeg' })
+	            );
+	        }
+	    }]);
+	
+	    return MainContent;
+	}(_react2.default.Component);
+
+/***/ },
+/* 244 */
+/*!************************************!*\
+  !*** ./src/app/js/xhr/Articles.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.getArticles = undefined;
+	
+	var _axios = __webpack_require__(/*! axios */ 245);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var getArticles = function getArticles() {
+	    return _axios2.default.get('/app/content/articles.json');
+	};
+	
+	exports.getArticles = getArticles;
+
+/***/ },
+/* 245 */
+/*!**************************!*\
+  !*** ./~/axios/index.js ***!
+  \**************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(/*! ./lib/axios */ 246);
+
+/***/ },
+/* 246 */
+/*!******************************!*\
+  !*** ./~/axios/lib/axios.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./utils */ 247);
+	var bind = __webpack_require__(/*! ./helpers/bind */ 248);
+	var Axios = __webpack_require__(/*! ./core/Axios */ 249);
+	var defaults = __webpack_require__(/*! ./defaults */ 250);
+	
+	/**
+	 * Create an instance of Axios
+	 *
+	 * @param {Object} defaultConfig The default config for the instance
+	 * @return {Axios} A new instance of Axios
+	 */
+	function createInstance(defaultConfig) {
+	  var context = new Axios(defaultConfig);
+	  var instance = bind(Axios.prototype.request, context);
+	
+	  // Copy axios.prototype to instance
+	  utils.extend(instance, Axios.prototype, context);
+	
+	  // Copy context to instance
+	  utils.extend(instance, context);
+	
+	  return instance;
+	}
+	
+	// Create the default instance to be exported
+	var axios = createInstance(defaults);
+	
+	// Expose Axios class to allow class inheritance
+	axios.Axios = Axios;
+	
+	// Factory for creating new instances
+	axios.create = function create(instanceConfig) {
+	  return createInstance(utils.merge(defaults, instanceConfig));
+	};
+	
+	// Expose Cancel & CancelToken
+	axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ 267);
+	axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ 268);
+	axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ 264);
+	
+	// Expose all/spread
+	axios.all = function all(promises) {
+	  return Promise.all(promises);
+	};
+	axios.spread = __webpack_require__(/*! ./helpers/spread */ 269);
+	
+	module.exports = axios;
+	
+	// Allow use of default import syntax in TypeScript
+	module.exports.default = axios;
+
+
+/***/ },
+/* 247 */
+/*!******************************!*\
+  !*** ./~/axios/lib/utils.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var bind = __webpack_require__(/*! ./helpers/bind */ 248);
+	
+	/*global toString:true*/
+	
+	// utils is a library of generic helper functions non-specific to axios
+	
+	var toString = Object.prototype.toString;
+	
+	/**
+	 * Determine if a value is an Array
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an Array, otherwise false
+	 */
+	function isArray(val) {
+	  return toString.call(val) === '[object Array]';
+	}
+	
+	/**
+	 * Determine if a value is an ArrayBuffer
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an ArrayBuffer, otherwise false
+	 */
+	function isArrayBuffer(val) {
+	  return toString.call(val) === '[object ArrayBuffer]';
+	}
+	
+	/**
+	 * Determine if a value is a FormData
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an FormData, otherwise false
+	 */
+	function isFormData(val) {
+	  return (typeof FormData !== 'undefined') && (val instanceof FormData);
+	}
+	
+	/**
+	 * Determine if a value is a view on an ArrayBuffer
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
+	 */
+	function isArrayBufferView(val) {
+	  var result;
+	  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
+	    result = ArrayBuffer.isView(val);
+	  } else {
+	    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Determine if a value is a String
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a String, otherwise false
+	 */
+	function isString(val) {
+	  return typeof val === 'string';
+	}
+	
+	/**
+	 * Determine if a value is a Number
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Number, otherwise false
+	 */
+	function isNumber(val) {
+	  return typeof val === 'number';
+	}
+	
+	/**
+	 * Determine if a value is undefined
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if the value is undefined, otherwise false
+	 */
+	function isUndefined(val) {
+	  return typeof val === 'undefined';
+	}
+	
+	/**
+	 * Determine if a value is an Object
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an Object, otherwise false
+	 */
+	function isObject(val) {
+	  return val !== null && typeof val === 'object';
+	}
+	
+	/**
+	 * Determine if a value is a Date
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Date, otherwise false
+	 */
+	function isDate(val) {
+	  return toString.call(val) === '[object Date]';
+	}
+	
+	/**
+	 * Determine if a value is a File
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a File, otherwise false
+	 */
+	function isFile(val) {
+	  return toString.call(val) === '[object File]';
+	}
+	
+	/**
+	 * Determine if a value is a Blob
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Blob, otherwise false
+	 */
+	function isBlob(val) {
+	  return toString.call(val) === '[object Blob]';
+	}
+	
+	/**
+	 * Determine if a value is a Function
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Function, otherwise false
+	 */
+	function isFunction(val) {
+	  return toString.call(val) === '[object Function]';
+	}
+	
+	/**
+	 * Determine if a value is a Stream
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Stream, otherwise false
+	 */
+	function isStream(val) {
+	  return isObject(val) && isFunction(val.pipe);
+	}
+	
+	/**
+	 * Determine if a value is a URLSearchParams object
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a URLSearchParams object, otherwise false
+	 */
+	function isURLSearchParams(val) {
+	  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
+	}
+	
+	/**
+	 * Trim excess whitespace off the beginning and end of a string
+	 *
+	 * @param {String} str The String to trim
+	 * @returns {String} The String freed of excess whitespace
+	 */
+	function trim(str) {
+	  return str.replace(/^\s*/, '').replace(/\s*$/, '');
+	}
+	
+	/**
+	 * Determine if we're running in a standard browser environment
+	 *
+	 * This allows axios to run in a web worker, and react-native.
+	 * Both environments support XMLHttpRequest, but not fully standard globals.
+	 *
+	 * web workers:
+	 *  typeof window -> undefined
+	 *  typeof document -> undefined
+	 *
+	 * react-native:
+	 *  typeof document.createElement -> undefined
+	 */
+	function isStandardBrowserEnv() {
+	  return (
+	    typeof window !== 'undefined' &&
+	    typeof document !== 'undefined' &&
+	    typeof document.createElement === 'function'
+	  );
+	}
+	
+	/**
+	 * Iterate over an Array or an Object invoking a function for each item.
+	 *
+	 * If `obj` is an Array callback will be called passing
+	 * the value, index, and complete array for each item.
+	 *
+	 * If 'obj' is an Object callback will be called passing
+	 * the value, key, and complete object for each property.
+	 *
+	 * @param {Object|Array} obj The object to iterate
+	 * @param {Function} fn The callback to invoke for each item
+	 */
+	function forEach(obj, fn) {
+	  // Don't bother if no value provided
+	  if (obj === null || typeof obj === 'undefined') {
+	    return;
+	  }
+	
+	  // Force an array if not already something iterable
+	  if (typeof obj !== 'object' && !isArray(obj)) {
+	    /*eslint no-param-reassign:0*/
+	    obj = [obj];
+	  }
+	
+	  if (isArray(obj)) {
+	    // Iterate over array values
+	    for (var i = 0, l = obj.length; i < l; i++) {
+	      fn.call(null, obj[i], i, obj);
+	    }
+	  } else {
+	    // Iterate over object keys
+	    for (var key in obj) {
+	      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+	        fn.call(null, obj[key], key, obj);
+	      }
+	    }
+	  }
+	}
+	
+	/**
+	 * Accepts varargs expecting each argument to be an object, then
+	 * immutably merges the properties of each object and returns result.
+	 *
+	 * When multiple objects contain the same key the later object in
+	 * the arguments list will take precedence.
+	 *
+	 * Example:
+	 *
+	 * ```js
+	 * var result = merge({foo: 123}, {foo: 456});
+	 * console.log(result.foo); // outputs 456
+	 * ```
+	 *
+	 * @param {Object} obj1 Object to merge
+	 * @returns {Object} Result of all merge properties
+	 */
+	function merge(/* obj1, obj2, obj3, ... */) {
+	  var result = {};
+	  function assignValue(val, key) {
+	    if (typeof result[key] === 'object' && typeof val === 'object') {
+	      result[key] = merge(result[key], val);
+	    } else {
+	      result[key] = val;
+	    }
+	  }
+	
+	  for (var i = 0, l = arguments.length; i < l; i++) {
+	    forEach(arguments[i], assignValue);
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Extends object a by mutably adding to it the properties of object b.
+	 *
+	 * @param {Object} a The object to be extended
+	 * @param {Object} b The object to copy properties from
+	 * @param {Object} thisArg The object to bind function to
+	 * @return {Object} The resulting value of object a
+	 */
+	function extend(a, b, thisArg) {
+	  forEach(b, function assignValue(val, key) {
+	    if (thisArg && typeof val === 'function') {
+	      a[key] = bind(val, thisArg);
+	    } else {
+	      a[key] = val;
+	    }
+	  });
+	  return a;
+	}
+	
+	module.exports = {
+	  isArray: isArray,
+	  isArrayBuffer: isArrayBuffer,
+	  isFormData: isFormData,
+	  isArrayBufferView: isArrayBufferView,
+	  isString: isString,
+	  isNumber: isNumber,
+	  isObject: isObject,
+	  isUndefined: isUndefined,
+	  isDate: isDate,
+	  isFile: isFile,
+	  isBlob: isBlob,
+	  isFunction: isFunction,
+	  isStream: isStream,
+	  isURLSearchParams: isURLSearchParams,
+	  isStandardBrowserEnv: isStandardBrowserEnv,
+	  forEach: forEach,
+	  merge: merge,
+	  extend: extend,
+	  trim: trim
+	};
+
+
+/***/ },
+/* 248 */
+/*!*************************************!*\
+  !*** ./~/axios/lib/helpers/bind.js ***!
+  \*************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	module.exports = function bind(fn, thisArg) {
+	  return function wrap() {
+	    var args = new Array(arguments.length);
+	    for (var i = 0; i < args.length; i++) {
+	      args[i] = arguments[i];
+	    }
+	    return fn.apply(thisArg, args);
+	  };
+	};
+
+
+/***/ },
+/* 249 */
+/*!***********************************!*\
+  !*** ./~/axios/lib/core/Axios.js ***!
+  \***********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var defaults = __webpack_require__(/*! ./../defaults */ 250);
+	var utils = __webpack_require__(/*! ./../utils */ 247);
+	var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ 261);
+	var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ 262);
+	var isAbsoluteURL = __webpack_require__(/*! ./../helpers/isAbsoluteURL */ 265);
+	var combineURLs = __webpack_require__(/*! ./../helpers/combineURLs */ 266);
+	
+	/**
+	 * Create a new instance of Axios
+	 *
+	 * @param {Object} instanceConfig The default config for the instance
+	 */
+	function Axios(instanceConfig) {
+	  this.defaults = instanceConfig;
+	  this.interceptors = {
+	    request: new InterceptorManager(),
+	    response: new InterceptorManager()
+	  };
+	}
+	
+	/**
+	 * Dispatch a request
+	 *
+	 * @param {Object} config The config specific for this request (merged with this.defaults)
+	 */
+	Axios.prototype.request = function request(config) {
+	  /*eslint no-param-reassign:0*/
+	  // Allow for axios('example/url'[, config]) a la fetch API
+	  if (typeof config === 'string') {
+	    config = utils.merge({
+	      url: arguments[0]
+	    }, arguments[1]);
+	  }
+	
+	  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
+	
+	  // Support baseURL config
+	  if (config.baseURL && !isAbsoluteURL(config.url)) {
+	    config.url = combineURLs(config.baseURL, config.url);
+	  }
+	
+	  // Hook up interceptors middleware
+	  var chain = [dispatchRequest, undefined];
+	  var promise = Promise.resolve(config);
+	
+	  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+	    chain.unshift(interceptor.fulfilled, interceptor.rejected);
+	  });
+	
+	  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
+	    chain.push(interceptor.fulfilled, interceptor.rejected);
+	  });
+	
+	  while (chain.length) {
+	    promise = promise.then(chain.shift(), chain.shift());
+	  }
+	
+	  return promise;
+	};
+	
+	// Provide aliases for supported request methods
+	utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+	  /*eslint func-names:0*/
+	  Axios.prototype[method] = function(url, config) {
+	    return this.request(utils.merge(config || {}, {
+	      method: method,
+	      url: url
+	    }));
+	  };
 	});
 	
-	exports.default = Music;
+	utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+	  /*eslint func-names:0*/
+	  Axios.prototype[method] = function(url, data, config) {
+	    return this.request(utils.merge(config || {}, {
+	      method: method,
+	      url: url,
+	      data: data
+	    }));
+	  };
+	});
+	
+	module.exports = Axios;
+
+
+/***/ },
+/* 250 */
+/*!*********************************!*\
+  !*** ./~/axios/lib/defaults.js ***!
+  \*********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	
+	var utils = __webpack_require__(/*! ./utils */ 247);
+	var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ 251);
+	
+	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
+	var DEFAULT_CONTENT_TYPE = {
+	  'Content-Type': 'application/x-www-form-urlencoded'
+	};
+	
+	function setContentTypeIfUnset(headers, value) {
+	  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
+	    headers['Content-Type'] = value;
+	  }
+	}
+	
+	function getDefaultAdapter() {
+	  var adapter;
+	  if (typeof XMLHttpRequest !== 'undefined') {
+	    // For browsers use XHR adapter
+	    adapter = __webpack_require__(/*! ./adapters/xhr */ 252);
+	  } else if (typeof process !== 'undefined') {
+	    // For node use HTTP adapter
+	    adapter = __webpack_require__(/*! ./adapters/http */ 252);
+	  }
+	  return adapter;
+	}
+	
+	var defaults = {
+	  adapter: getDefaultAdapter(),
+	
+	  transformRequest: [function transformRequest(data, headers) {
+	    normalizeHeaderName(headers, 'Content-Type');
+	    if (utils.isFormData(data) ||
+	      utils.isArrayBuffer(data) ||
+	      utils.isStream(data) ||
+	      utils.isFile(data) ||
+	      utils.isBlob(data)
+	    ) {
+	      return data;
+	    }
+	    if (utils.isArrayBufferView(data)) {
+	      return data.buffer;
+	    }
+	    if (utils.isURLSearchParams(data)) {
+	      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+	      return data.toString();
+	    }
+	    if (utils.isObject(data)) {
+	      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+	      return JSON.stringify(data);
+	    }
+	    return data;
+	  }],
+	
+	  transformResponse: [function transformResponse(data) {
+	    /*eslint no-param-reassign:0*/
+	    if (typeof data === 'string') {
+	      data = data.replace(PROTECTION_PREFIX, '');
+	      try {
+	        data = JSON.parse(data);
+	      } catch (e) { /* Ignore */ }
+	    }
+	    return data;
+	  }],
+	
+	  timeout: 0,
+	
+	  xsrfCookieName: 'XSRF-TOKEN',
+	  xsrfHeaderName: 'X-XSRF-TOKEN',
+	
+	  maxContentLength: -1,
+	
+	  validateStatus: function validateStatus(status) {
+	    return status >= 200 && status < 300;
+	  }
+	};
+	
+	defaults.headers = {
+	  common: {
+	    'Accept': 'application/json, text/plain, */*'
+	  }
+	};
+	
+	utils.forEach(['delete', 'get', 'head'], function forEachMehtodNoData(method) {
+	  defaults.headers[method] = {};
+	});
+	
+	utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+	  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
+	});
+	
+	module.exports = defaults;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../process/browser.js */ 3)))
+
+/***/ },
+/* 251 */
+/*!****************************************************!*\
+  !*** ./~/axios/lib/helpers/normalizeHeaderName.js ***!
+  \****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ../utils */ 247);
+	
+	module.exports = function normalizeHeaderName(headers, normalizedName) {
+	  utils.forEach(headers, function processHeader(value, name) {
+	    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
+	      headers[normalizedName] = value;
+	      delete headers[name];
+	    }
+	  });
+	};
+
+
+/***/ },
+/* 252 */
+/*!*************************************!*\
+  !*** ./~/axios/lib/adapters/xhr.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 247);
+	var settle = __webpack_require__(/*! ./../core/settle */ 253);
+	var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ 256);
+	var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ 257);
+	var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ 258);
+	var createError = __webpack_require__(/*! ../core/createError */ 254);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(/*! ./../helpers/btoa */ 259);
+	
+	module.exports = function xhrAdapter(config) {
+	  return new Promise(function dispatchXhrRequest(resolve, reject) {
+	    var requestData = config.data;
+	    var requestHeaders = config.headers;
+	
+	    if (utils.isFormData(requestData)) {
+	      delete requestHeaders['Content-Type']; // Let the browser set it
+	    }
+	
+	    var request = new XMLHttpRequest();
+	    var loadEvent = 'onreadystatechange';
+	    var xDomain = false;
+	
+	    // For IE 8/9 CORS support
+	    // Only supports POST and GET calls and doesn't returns the response headers.
+	    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
+	    if (process.env.NODE_ENV !== 'test' &&
+	        typeof window !== 'undefined' &&
+	        window.XDomainRequest && !('withCredentials' in request) &&
+	        !isURLSameOrigin(config.url)) {
+	      request = new window.XDomainRequest();
+	      loadEvent = 'onload';
+	      xDomain = true;
+	      request.onprogress = function handleProgress() {};
+	      request.ontimeout = function handleTimeout() {};
+	    }
+	
+	    // HTTP basic authentication
+	    if (config.auth) {
+	      var username = config.auth.username || '';
+	      var password = config.auth.password || '';
+	      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
+	    }
+	
+	    request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
+	
+	    // Set the request timeout in MS
+	    request.timeout = config.timeout;
+	
+	    // Listen for ready state
+	    request[loadEvent] = function handleLoad() {
+	      if (!request || (request.readyState !== 4 && !xDomain)) {
+	        return;
+	      }
+	
+	      // The request errored out and we didn't get a response, this will be
+	      // handled by onerror instead
+	      // With one exception: request that using file: protocol, most browsers
+	      // will return status as 0 even though it's a successful request
+	      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
+	        return;
+	      }
+	
+	      // Prepare the response
+	      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
+	      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
+	      var response = {
+	        data: responseData,
+	        // IE sends 1223 instead of 204 (https://github.com/mzabriskie/axios/issues/201)
+	        status: request.status === 1223 ? 204 : request.status,
+	        statusText: request.status === 1223 ? 'No Content' : request.statusText,
+	        headers: responseHeaders,
+	        config: config,
+	        request: request
+	      };
+	
+	      settle(resolve, reject, response);
+	
+	      // Clean up request
+	      request = null;
+	    };
+	
+	    // Handle low level network errors
+	    request.onerror = function handleError() {
+	      // Real errors are hidden from us by the browser
+	      // onerror should only fire if it's a network error
+	      reject(createError('Network Error', config));
+	
+	      // Clean up request
+	      request = null;
+	    };
+	
+	    // Handle timeout
+	    request.ontimeout = function handleTimeout() {
+	      reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED'));
+	
+	      // Clean up request
+	      request = null;
+	    };
+	
+	    // Add xsrf header
+	    // This is only done if running in a standard browser environment.
+	    // Specifically not if we're in a web worker, or react-native.
+	    if (utils.isStandardBrowserEnv()) {
+	      var cookies = __webpack_require__(/*! ./../helpers/cookies */ 260);
+	
+	      // Add xsrf header
+	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
+	          cookies.read(config.xsrfCookieName) :
+	          undefined;
+	
+	      if (xsrfValue) {
+	        requestHeaders[config.xsrfHeaderName] = xsrfValue;
+	      }
+	    }
+	
+	    // Add headers to the request
+	    if ('setRequestHeader' in request) {
+	      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
+	        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
+	          // Remove Content-Type if data is undefined
+	          delete requestHeaders[key];
+	        } else {
+	          // Otherwise add header to the request
+	          request.setRequestHeader(key, val);
+	        }
+	      });
+	    }
+	
+	    // Add withCredentials to request if needed
+	    if (config.withCredentials) {
+	      request.withCredentials = true;
+	    }
+	
+	    // Add responseType to request if needed
+	    if (config.responseType) {
+	      try {
+	        request.responseType = config.responseType;
+	      } catch (e) {
+	        if (request.responseType !== 'json') {
+	          throw e;
+	        }
+	      }
+	    }
+	
+	    // Handle progress if needed
+	    if (typeof config.onDownloadProgress === 'function') {
+	      request.addEventListener('progress', config.onDownloadProgress);
+	    }
+	
+	    // Not all browsers support upload events
+	    if (typeof config.onUploadProgress === 'function' && request.upload) {
+	      request.upload.addEventListener('progress', config.onUploadProgress);
+	    }
+	
+	    if (config.cancelToken) {
+	      // Handle cancellation
+	      config.cancelToken.promise.then(function onCanceled(cancel) {
+	        if (!request) {
+	          return;
+	        }
+	
+	        request.abort();
+	        reject(cancel);
+	        // Clean up request
+	        request = null;
+	      });
+	    }
+	
+	    if (requestData === undefined) {
+	      requestData = null;
+	    }
+	
+	    // Send the request
+	    request.send(requestData);
+	  });
+	};
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../process/browser.js */ 3)))
+
+/***/ },
+/* 253 */
+/*!************************************!*\
+  !*** ./~/axios/lib/core/settle.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var createError = __webpack_require__(/*! ./createError */ 254);
+	
+	/**
+	 * Resolve or reject a Promise based on response status.
+	 *
+	 * @param {Function} resolve A function that resolves the promise.
+	 * @param {Function} reject A function that rejects the promise.
+	 * @param {object} response The response.
+	 */
+	module.exports = function settle(resolve, reject, response) {
+	  var validateStatus = response.config.validateStatus;
+	  // Note: status is not exposed by XDomainRequest
+	  if (!response.status || !validateStatus || validateStatus(response.status)) {
+	    resolve(response);
+	  } else {
+	    reject(createError(
+	      'Request failed with status code ' + response.status,
+	      response.config,
+	      null,
+	      response
+	    ));
+	  }
+	};
+
+
+/***/ },
+/* 254 */
+/*!*****************************************!*\
+  !*** ./~/axios/lib/core/createError.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var enhanceError = __webpack_require__(/*! ./enhanceError */ 255);
+	
+	/**
+	 * Create an Error with the specified message, config, error code, and response.
+	 *
+	 * @param {string} message The error message.
+	 * @param {Object} config The config.
+	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
+	 @ @param {Object} [response] The response.
+	 * @returns {Error} The created error.
+	 */
+	module.exports = function createError(message, config, code, response) {
+	  var error = new Error(message);
+	  return enhanceError(error, config, code, response);
+	};
+
+
+/***/ },
+/* 255 */
+/*!******************************************!*\
+  !*** ./~/axios/lib/core/enhanceError.js ***!
+  \******************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Update an Error with the specified config, error code, and response.
+	 *
+	 * @param {Error} error The error to update.
+	 * @param {Object} config The config.
+	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
+	 @ @param {Object} [response] The response.
+	 * @returns {Error} The error.
+	 */
+	module.exports = function enhanceError(error, config, code, response) {
+	  error.config = config;
+	  if (code) {
+	    error.code = code;
+	  }
+	  error.response = response;
+	  return error;
+	};
+
+
+/***/ },
+/* 256 */
+/*!*****************************************!*\
+  !*** ./~/axios/lib/helpers/buildURL.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 247);
+	
+	function encode(val) {
+	  return encodeURIComponent(val).
+	    replace(/%40/gi, '@').
+	    replace(/%3A/gi, ':').
+	    replace(/%24/g, '$').
+	    replace(/%2C/gi, ',').
+	    replace(/%20/g, '+').
+	    replace(/%5B/gi, '[').
+	    replace(/%5D/gi, ']');
+	}
+	
+	/**
+	 * Build a URL by appending params to the end
+	 *
+	 * @param {string} url The base of the url (e.g., http://www.google.com)
+	 * @param {object} [params] The params to be appended
+	 * @returns {string} The formatted url
+	 */
+	module.exports = function buildURL(url, params, paramsSerializer) {
+	  /*eslint no-param-reassign:0*/
+	  if (!params) {
+	    return url;
+	  }
+	
+	  var serializedParams;
+	  if (paramsSerializer) {
+	    serializedParams = paramsSerializer(params);
+	  } else if (utils.isURLSearchParams(params)) {
+	    serializedParams = params.toString();
+	  } else {
+	    var parts = [];
+	
+	    utils.forEach(params, function serialize(val, key) {
+	      if (val === null || typeof val === 'undefined') {
+	        return;
+	      }
+	
+	      if (utils.isArray(val)) {
+	        key = key + '[]';
+	      }
+	
+	      if (!utils.isArray(val)) {
+	        val = [val];
+	      }
+	
+	      utils.forEach(val, function parseValue(v) {
+	        if (utils.isDate(v)) {
+	          v = v.toISOString();
+	        } else if (utils.isObject(v)) {
+	          v = JSON.stringify(v);
+	        }
+	        parts.push(encode(key) + '=' + encode(v));
+	      });
+	    });
+	
+	    serializedParams = parts.join('&');
+	  }
+	
+	  if (serializedParams) {
+	    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+	  }
+	
+	  return url;
+	};
+
+
+/***/ },
+/* 257 */
+/*!*********************************************!*\
+  !*** ./~/axios/lib/helpers/parseHeaders.js ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 247);
+	
+	/**
+	 * Parse headers into an object
+	 *
+	 * ```
+	 * Date: Wed, 27 Aug 2014 08:58:49 GMT
+	 * Content-Type: application/json
+	 * Connection: keep-alive
+	 * Transfer-Encoding: chunked
+	 * ```
+	 *
+	 * @param {String} headers Headers needing to be parsed
+	 * @returns {Object} Headers parsed into an object
+	 */
+	module.exports = function parseHeaders(headers) {
+	  var parsed = {};
+	  var key;
+	  var val;
+	  var i;
+	
+	  if (!headers) { return parsed; }
+	
+	  utils.forEach(headers.split('\n'), function parser(line) {
+	    i = line.indexOf(':');
+	    key = utils.trim(line.substr(0, i)).toLowerCase();
+	    val = utils.trim(line.substr(i + 1));
+	
+	    if (key) {
+	      parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
+	    }
+	  });
+	
+	  return parsed;
+	};
+
+
+/***/ },
+/* 258 */
+/*!************************************************!*\
+  !*** ./~/axios/lib/helpers/isURLSameOrigin.js ***!
+  \************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 247);
+	
+	module.exports = (
+	  utils.isStandardBrowserEnv() ?
+	
+	  // Standard browser envs have full support of the APIs needed to test
+	  // whether the request URL is of the same origin as current location.
+	  (function standardBrowserEnv() {
+	    var msie = /(msie|trident)/i.test(navigator.userAgent);
+	    var urlParsingNode = document.createElement('a');
+	    var originURL;
+	
+	    /**
+	    * Parse a URL to discover it's components
+	    *
+	    * @param {String} url The URL to be parsed
+	    * @returns {Object}
+	    */
+	    function resolveURL(url) {
+	      var href = url;
+	
+	      if (msie) {
+	        // IE needs attribute set twice to normalize properties
+	        urlParsingNode.setAttribute('href', href);
+	        href = urlParsingNode.href;
+	      }
+	
+	      urlParsingNode.setAttribute('href', href);
+	
+	      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
+	      return {
+	        href: urlParsingNode.href,
+	        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
+	        host: urlParsingNode.host,
+	        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
+	        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
+	        hostname: urlParsingNode.hostname,
+	        port: urlParsingNode.port,
+	        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
+	                  urlParsingNode.pathname :
+	                  '/' + urlParsingNode.pathname
+	      };
+	    }
+	
+	    originURL = resolveURL(window.location.href);
+	
+	    /**
+	    * Determine if a URL shares the same origin as the current location
+	    *
+	    * @param {String} requestURL The URL to test
+	    * @returns {boolean} True if URL shares the same origin, otherwise false
+	    */
+	    return function isURLSameOrigin(requestURL) {
+	      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
+	      return (parsed.protocol === originURL.protocol &&
+	            parsed.host === originURL.host);
+	    };
+	  })() :
+	
+	  // Non standard browser envs (web workers, react-native) lack needed support.
+	  (function nonStandardBrowserEnv() {
+	    return function isURLSameOrigin() {
+	      return true;
+	    };
+	  })()
+	);
+
+
+/***/ },
+/* 259 */
+/*!*************************************!*\
+  !*** ./~/axios/lib/helpers/btoa.js ***!
+  \*************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
+	
+	var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+	
+	function E() {
+	  this.message = 'String contains an invalid character';
+	}
+	E.prototype = new Error;
+	E.prototype.code = 5;
+	E.prototype.name = 'InvalidCharacterError';
+	
+	function btoa(input) {
+	  var str = String(input);
+	  var output = '';
+	  for (
+	    // initialize result and counter
+	    var block, charCode, idx = 0, map = chars;
+	    // if the next str index does not exist:
+	    //   change the mapping table to "="
+	    //   check if d has no fractional digits
+	    str.charAt(idx | 0) || (map = '=', idx % 1);
+	    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
+	    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
+	  ) {
+	    charCode = str.charCodeAt(idx += 3 / 4);
+	    if (charCode > 0xFF) {
+	      throw new E();
+	    }
+	    block = block << 8 | charCode;
+	  }
+	  return output;
+	}
+	
+	module.exports = btoa;
+
+
+/***/ },
+/* 260 */
+/*!****************************************!*\
+  !*** ./~/axios/lib/helpers/cookies.js ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 247);
+	
+	module.exports = (
+	  utils.isStandardBrowserEnv() ?
+	
+	  // Standard browser envs support document.cookie
+	  (function standardBrowserEnv() {
+	    return {
+	      write: function write(name, value, expires, path, domain, secure) {
+	        var cookie = [];
+	        cookie.push(name + '=' + encodeURIComponent(value));
+	
+	        if (utils.isNumber(expires)) {
+	          cookie.push('expires=' + new Date(expires).toGMTString());
+	        }
+	
+	        if (utils.isString(path)) {
+	          cookie.push('path=' + path);
+	        }
+	
+	        if (utils.isString(domain)) {
+	          cookie.push('domain=' + domain);
+	        }
+	
+	        if (secure === true) {
+	          cookie.push('secure');
+	        }
+	
+	        document.cookie = cookie.join('; ');
+	      },
+	
+	      read: function read(name) {
+	        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+	        return (match ? decodeURIComponent(match[3]) : null);
+	      },
+	
+	      remove: function remove(name) {
+	        this.write(name, '', Date.now() - 86400000);
+	      }
+	    };
+	  })() :
+	
+	  // Non standard browser env (web workers, react-native) lack needed support.
+	  (function nonStandardBrowserEnv() {
+	    return {
+	      write: function write() {},
+	      read: function read() { return null; },
+	      remove: function remove() {}
+	    };
+	  })()
+	);
+
+
+/***/ },
+/* 261 */
+/*!************************************************!*\
+  !*** ./~/axios/lib/core/InterceptorManager.js ***!
+  \************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 247);
+	
+	function InterceptorManager() {
+	  this.handlers = [];
+	}
+	
+	/**
+	 * Add a new interceptor to the stack
+	 *
+	 * @param {Function} fulfilled The function to handle `then` for a `Promise`
+	 * @param {Function} rejected The function to handle `reject` for a `Promise`
+	 *
+	 * @return {Number} An ID used to remove interceptor later
+	 */
+	InterceptorManager.prototype.use = function use(fulfilled, rejected) {
+	  this.handlers.push({
+	    fulfilled: fulfilled,
+	    rejected: rejected
+	  });
+	  return this.handlers.length - 1;
+	};
+	
+	/**
+	 * Remove an interceptor from the stack
+	 *
+	 * @param {Number} id The ID that was returned by `use`
+	 */
+	InterceptorManager.prototype.eject = function eject(id) {
+	  if (this.handlers[id]) {
+	    this.handlers[id] = null;
+	  }
+	};
+	
+	/**
+	 * Iterate over all the registered interceptors
+	 *
+	 * This method is particularly useful for skipping over any
+	 * interceptors that may have become `null` calling `eject`.
+	 *
+	 * @param {Function} fn The function to call for each interceptor
+	 */
+	InterceptorManager.prototype.forEach = function forEach(fn) {
+	  utils.forEach(this.handlers, function forEachHandler(h) {
+	    if (h !== null) {
+	      fn(h);
+	    }
+	  });
+	};
+	
+	module.exports = InterceptorManager;
+
+
+/***/ },
+/* 262 */
+/*!*********************************************!*\
+  !*** ./~/axios/lib/core/dispatchRequest.js ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 247);
+	var transformData = __webpack_require__(/*! ./transformData */ 263);
+	var isCancel = __webpack_require__(/*! ../cancel/isCancel */ 264);
+	var defaults = __webpack_require__(/*! ../defaults */ 250);
+	
+	/**
+	 * Throws a `Cancel` if cancellation has been requested.
+	 */
+	function throwIfCancellationRequested(config) {
+	  if (config.cancelToken) {
+	    config.cancelToken.throwIfRequested();
+	  }
+	}
+	
+	/**
+	 * Dispatch a request to the server using the configured adapter.
+	 *
+	 * @param {object} config The config that is to be used for the request
+	 * @returns {Promise} The Promise to be fulfilled
+	 */
+	module.exports = function dispatchRequest(config) {
+	  throwIfCancellationRequested(config);
+	
+	  // Ensure headers exist
+	  config.headers = config.headers || {};
+	
+	  // Transform request data
+	  config.data = transformData(
+	    config.data,
+	    config.headers,
+	    config.transformRequest
+	  );
+	
+	  // Flatten headers
+	  config.headers = utils.merge(
+	    config.headers.common || {},
+	    config.headers[config.method] || {},
+	    config.headers || {}
+	  );
+	
+	  utils.forEach(
+	    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
+	    function cleanHeaderConfig(method) {
+	      delete config.headers[method];
+	    }
+	  );
+	
+	  var adapter = config.adapter || defaults.adapter;
+	
+	  return adapter(config).then(function onAdapterResolution(response) {
+	    throwIfCancellationRequested(config);
+	
+	    // Transform response data
+	    response.data = transformData(
+	      response.data,
+	      response.headers,
+	      config.transformResponse
+	    );
+	
+	    return response;
+	  }, function onAdapterRejection(reason) {
+	    if (!isCancel(reason)) {
+	      throwIfCancellationRequested(config);
+	
+	      // Transform response data
+	      if (reason && reason.response) {
+	        reason.response.data = transformData(
+	          reason.response.data,
+	          reason.response.headers,
+	          config.transformResponse
+	        );
+	      }
+	    }
+	
+	    return Promise.reject(reason);
+	  });
+	};
+
+
+/***/ },
+/* 263 */
+/*!*******************************************!*\
+  !*** ./~/axios/lib/core/transformData.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 247);
+	
+	/**
+	 * Transform the data for a request or a response
+	 *
+	 * @param {Object|String} data The data to be transformed
+	 * @param {Array} headers The headers for the request or response
+	 * @param {Array|Function} fns A single function or Array of functions
+	 * @returns {*} The resulting transformed data
+	 */
+	module.exports = function transformData(data, headers, fns) {
+	  /*eslint no-param-reassign:0*/
+	  utils.forEach(fns, function transform(fn) {
+	    data = fn(data, headers);
+	  });
+	
+	  return data;
+	};
+
+
+/***/ },
+/* 264 */
+/*!****************************************!*\
+  !*** ./~/axios/lib/cancel/isCancel.js ***!
+  \****************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	module.exports = function isCancel(value) {
+	  return !!(value && value.__CANCEL__);
+	};
+
+
+/***/ },
+/* 265 */
+/*!**********************************************!*\
+  !*** ./~/axios/lib/helpers/isAbsoluteURL.js ***!
+  \**********************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Determines whether the specified URL is absolute
+	 *
+	 * @param {string} url The URL to test
+	 * @returns {boolean} True if the specified URL is absolute, otherwise false
+	 */
+	module.exports = function isAbsoluteURL(url) {
+	  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
+	  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
+	  // by any combination of letters, digits, plus, period, or hyphen.
+	  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+	};
+
+
+/***/ },
+/* 266 */
+/*!********************************************!*\
+  !*** ./~/axios/lib/helpers/combineURLs.js ***!
+  \********************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Creates a new URL by combining the specified URLs
+	 *
+	 * @param {string} baseURL The base URL
+	 * @param {string} relativeURL The relative URL
+	 * @returns {string} The combined URL
+	 */
+	module.exports = function combineURLs(baseURL, relativeURL) {
+	  return baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '');
+	};
+
+
+/***/ },
+/* 267 */
+/*!**************************************!*\
+  !*** ./~/axios/lib/cancel/Cancel.js ***!
+  \**************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * A `Cancel` is an object that is thrown when an operation is canceled.
+	 *
+	 * @class
+	 * @param {string=} message The message.
+	 */
+	function Cancel(message) {
+	  this.message = message;
+	}
+	
+	Cancel.prototype.toString = function toString() {
+	  return 'Cancel' + (this.message ? ': ' + this.message : '');
+	};
+	
+	Cancel.prototype.__CANCEL__ = true;
+	
+	module.exports = Cancel;
+
+
+/***/ },
+/* 268 */
+/*!*******************************************!*\
+  !*** ./~/axios/lib/cancel/CancelToken.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var Cancel = __webpack_require__(/*! ./Cancel */ 267);
+	
+	/**
+	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
+	 *
+	 * @class
+	 * @param {Function} executor The executor function.
+	 */
+	function CancelToken(executor) {
+	  if (typeof executor !== 'function') {
+	    throw new TypeError('executor must be a function.');
+	  }
+	
+	  var resolvePromise;
+	  this.promise = new Promise(function promiseExecutor(resolve) {
+	    resolvePromise = resolve;
+	  });
+	
+	  var token = this;
+	  executor(function cancel(message) {
+	    if (token.reason) {
+	      // Cancellation has already been requested
+	      return;
+	    }
+	
+	    token.reason = new Cancel(message);
+	    resolvePromise(token.reason);
+	  });
+	}
+	
+	/**
+	 * Throws a `Cancel` if cancellation has been requested.
+	 */
+	CancelToken.prototype.throwIfRequested = function throwIfRequested() {
+	  if (this.reason) {
+	    throw this.reason;
+	  }
+	};
+	
+	/**
+	 * Returns an object that contains a new `CancelToken` and a function that, when called,
+	 * cancels the `CancelToken`.
+	 */
+	CancelToken.source = function source() {
+	  var cancel;
+	  var token = new CancelToken(function executor(c) {
+	    cancel = c;
+	  });
+	  return {
+	    token: token,
+	    cancel: cancel
+	  };
+	};
+	
+	module.exports = CancelToken;
+
+
+/***/ },
+/* 269 */
+/*!***************************************!*\
+  !*** ./~/axios/lib/helpers/spread.js ***!
+  \***************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Syntactic sugar for invoking a function and expanding an array for arguments.
+	 *
+	 * Common use case would be to use `Function.prototype.apply`.
+	 *
+	 *  ```js
+	 *  function f(x, y, z) {}
+	 *  var args = [1, 2, 3];
+	 *  f.apply(null, args);
+	 *  ```
+	 *
+	 * With `spread` this example can be re-written.
+	 *
+	 *  ```js
+	 *  spread(function(x, y, z) {})([1, 2, 3]);
+	 *  ```
+	 *
+	 * @param {Function} callback
+	 * @returns {Function}
+	 */
+	module.exports = function spread(callback) {
+	  return function wrap(arr) {
+	    return callback.apply(null, arr);
+	  };
+	};
+
+
+/***/ },
+/* 270 */
+/*!*************************************!*\
+  !*** ./src/app/css/Maincontent.css ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./Maincontent.css */ 271);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 237)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./Maincontent.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./Maincontent.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 271 */
+/*!****************************************************!*\
+  !*** ./~/css-loader!./src/app/css/Maincontent.css ***!
+  \****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 236)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".maintext{\n    position: relative;\n    font-family: armalite_rifle;\n    font-size: 5em;\n    text-align: center;\n    color: #FFFFFF;\n    margin: 60px 0 0 0;\n\n}\n@-moz-document url-prefix() {\n    .maintext{\n        font-size: 4.9rem;\n    }\n}\n.article_container{\n    display: block;\n    margin: 0 auto;\n    max-width: 1200px;\n    text-align:justify;\n    border-radius: 5px;\n    -webkit-box-shadow: 0px 6px 50px 1px rgba(117,117,117,0.86);\n    -moz-box-shadow: 0px 6px 50px 1px rgba(117,117,117,0.86);\n    box-shadow: 0px 6px 50px 1px rgba(156, 156, 156, 0.82);\n}\n.article_left{\n    align-self: flex-start;\n    float: left;\n    height: 90%;\n    width: 45%;\n    padding: 1%;\n}\n.article_right{\n    float: right;\n    height: 90%;\n    width: 32%;\n    padding: 1%;\n    cursor: pointer;\n}\n.article_right_gif{\n    float: right;\n    height: 90%;\n    width: 32%;\n    padding: 1%;\n    cursor: pointer;\n}\n.articletext{\n    color: #E4E4E4;\n    font-size: 2rem;\n    font-family: armalite_rifle, beaumarchaisc;\n    padding: 1%;\n    margin: 1%;\n}\n@media screen and (max-width: 1182px) {\n    .maintext {font-size: 4.8rem;}\n}\n@media screen and (max-width: 1135px) {\n    .maintext {font-size: 4.7rem;}\n}\n@media screen and (max-width: 1111px) {\n    .maintext {font-size: 4.6rem;}\n}\n@media screen and (max-width: 1088px) {\n    .maintext {font-size: 4.5rem;}\n}\n@media screen and (max-width: 1064px) {\n    .maintext {font-size: 4.4rem;}\n}\n@media screen and (max-width: 1040px) {\n    .maintext {font-size: 4.3rem;}\n}\n@media screen and (max-width: 1024px) {\n    .maintext {font-size: 4rem;}\n}\n@media screen and (max-width: 946px) {\n    .maintext {font-size: 3.9rem;}\n}\n@media screen and (max-width: 922px) {\n    .maintext {font-size: 3.8rem;}\n}\n@media screen and (max-width: 898px) {\n    .maintext {font-size: 3.7rem;}\n}\n@media screen and (max-width: 875px) {\n    .maintext {font-size: 3.6rem;}\n}\n@media screen and (max-width: 851px) {\n    .maintext {font-size: 3.5rem;}\n}\n@media screen and (max-width: 827px) {\n    .maintext {font-size: 3.4rem;}\n}\n@media screen and (max-width: 804px) {\n    .maintext {font-size: 3.3rem;}\n}\n@media screen and (max-width: 780px) {\n    .maintext {font-size: 3.2rem;}\n}\n@media screen and (max-width: 757px) {\n    .maintext {font-size: 3.1rem;}\n}\n@media screen and (max-width: 733px) {\n    .maintext {font-size: 3rem;}\n}\n@media screen and (max-width: 709px) {\n    .maintext {font-size: 2.9rem;}\n}\n@media screen and (max-width: 686px) {\n    .maintext {font-size: 2.8rem;}\n}\n@media screen and (max-width: 662px) {\n    .maintext {font-size: 2.7rem;}\n}\n@media screen and (max-width: 638px) {\n    .maintext {font-size: 2.6rem;}\n}\n@media screen and (max-width: 615px) {\n    .maintext {font-size: 2.5rem;}\n}\n@media screen and (max-width: 591px) {\n    .maintext {font-size: 2.4rem;}\n}\n@media screen and (max-width: 567px) {\n    .maintext {font-size: 2.3rem;}\n}\n@media screen and (max-width: 544px) {\n    .maintext {font-size: 2.2rem;}\n}\n@media screen and (max-width: 520px) {\n    .maintext {font-size: 2.1rem;}\n}\n@media screen and (max-width: 496px) {\n    .maintext {font-size: 2rem;}\n}\n@media screen and (max-width: 473px) {\n    .maintext {font-size: 1.9rem;}\n}\n@media screen and (max-width: 449px) {\n    .maintext {font-size: 1.8rem;}\n}\n@media screen and (max-width: 425px) {\n    .maintext {font-size: 1.7rem;}\n}\n@media screen and (max-width: 402px) {\n    .maintext {font-size: 1.6rem;}\n}\n@media screen and (max-width: 378px) {\n    .maintext {font-size: 1.5rem;}\n}\n@media screen and (max-width: 354px) {\n    .maintext {font-size: 1.4rem;}\n}\n@media screen and (max-width: 331px) {\n    .maintext {font-size: 1.3rem;}\n}", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 272 */
+/*!*****************************!*\
+  !*** ./src/app/js/Music.js ***!
+  \*****************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	{/*import React from 'react';*/}
+	{/*// import '../css/Music.css';*/}
+	{/*import {Header} from './Header'*/}
+	{/*// import 'bootstrap/dist/css/bootstrap.css';*/}
+	
+	{/*let MusicContent = function () {*/}
+	{/*return (*/}
+	{/*<div className="music_container">*/}
+	{/*<h1 className="slogan">Choose your favorite style!</h1>*/}
+	{/*<ul className="nav nav-tabs" id="NavTab">*/}
+	{/*<li role="presentation" className="active"><a href="#Aggrotech" role="tab" data-toggle="tab">Aggrotech</a></li>*/}
+	{/*<li role="presentation" className="active"><a href="#Aggrotech" role="tab" data-toggle="tab">Aggrotech</a></li>*/}
+	{/*<li role="presentation"><a href="#IndustrialDance" role="tab" data-toggle="tab">Industrial Dance</a></li>*/}
+	{/*<li><a href="#IndustrialMetal" data-toggle="tab">Industrial Metal</a></li>*/}
+	{/*<li><a href="#CyberDance" data-toggle="tab">Cyber Dance</a></li>*/}
+	{/*<li><a href="#RapCore" data-toggle="tab">Rap Core</a></li>*/}
+	{/*</ul>*/}
+	{/*<div className="tab-content">*/}
+	{/*<div id="Aggrotech" className="tab-pane fade in active">*/}
+	{/*<div className="col-xs-12 container-fluid">*/}
+	{/*<h1 id="groupname">Sleetgrout</h1>*/}
+	{/*<img src="https://img1.goodfon.ru/wallpaper/big/9/36/sleetgrout-try-to-die-ebm.jpg" role="presentation"/>*/}
+	{/*<p>История ростовского индастриал-проекта Sleetgrout берёт начало в 2003 году, когда вокалист и основатель проекта Фридрих решил активизировать свой творческий потенциал.*/}
+	{/*Regenengel - так назывался в то время его one-man-проект, был создан для воплощения в жизнь музыкальных идей, лежащих в плоскости industrial/ambient, и первая концертная программа Фридриха была*/}
+	{/*представлена на одной из ростовских готических вечеринок именно под этим названием.*/}
+	{/*Группа Sleetgrout образовалась в конце 2005 года. Скопировано с Dark-World.ru. Еще до выхода дебютной пластинки группа успела перемикшировать западных исполнителей (Mechanical Moth,*/}
+	{/*Sinmasters и Wynardtage), а также поучаствовать в нескольких зарубежных компиляциях. Ландшафтные композиции нашли своих ценителей, положительные отзывы заставили продолжить развитие в этом направлении.*/}
+	{/*Однако после нескольких выступлений, уже при участии вошедшего в состав группы гитариста, было принято решение о создании сайд-проекта. Участники этого нового музыкального образования самостоятельно*/}
+	{/*издали сингл "Hiding Behind Thedoors", на который кроме оригинальной версии песни вошли два ремикса от ростовского же IDM-проекта Insanity.*/}
+	{/*С течением времени к проекту присоединилась клавишница Марго, а название Regenengel было изменено на Sleetgrout.*/}
+	{/*Стиль группы окончательно установился и теперь может быть обозначен как dark industrial/synth goth с мощным электронным и гитарным звучанием.*/}
+	{/*В 2006 году группа выступила на разогреве ростовского шоу Das Ich и приняла участие в международном фестивале Radio Inferno V. За время своего существования группа успела поучаствовать*/}
+	{/*в нескольких международных фестивалях - Radio Inferno, Возрождение, Synthetic Snow. Дважды проект саппортировал Das Ich, выступал на одной сцене с Terminal Choice, Red Flag, Assemblage 23,*/}
+	{/*Clan of Xymox. Проект сотрудничает и обменивается ремиксами с такими группами, как Alien Vampires, Eden Synthetic Corps, Infra Black, Stidio-X, Wynardtage, [Nurzery Rhymes],*/}
+	{/*The Synthetic Dream Foundation, Mechanical Moth и другими. В 2009 году группа стала хэдлайнером фестиваля Dark Entries.*/}
+	{/*В 2010 году команда выпустила дебютный альбом, озаглавленный "Principle Of Dark Electro", после которого началась работа над вторым полноформатником, "We Had A Carnival".*/}
+	{/*Выход релиза состоялся в 2012 году.</p>*/}
+	{/*<div id="music">*/}
+	{/*<p>Sleetgrout - Try to Die</p>*/}
+	{/*<audio src="https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B7v9qcIiVdl5VUdJN1ZNbzBSeFE" controls type="audio/mpeg"></audio>*/}
+	{/*<p>Sleetgrout - We Had A Carnival</p>*/}
+	{/*<audio src="https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B7v9qcIiVdl5dkFsWjFQanE3NlU" controls type="audio/mpeg"></audio>*/}
+	{/*<p>Sleetgrout - sleetgrout-w-e </p>*/}
+	{/*<audio src="https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B7v9qcIiVdl5eHlaRU1NSnF5MGc" controls type="audio/mpeg"></audio>*/}
+	{/*<p>Sleetgrout - Feel Me Twice</p>*/}
+	{/*<audio src="https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B7v9qcIiVdl5aDlKRm9PQmY0Q3c" controls type="audio/mpeg"></audio>*/}
+	{/*</div>*/}
+	{/*</div>*/}
+	{/*</div>*/}
+	{/*<div id="IndustrialDance" className="tab-pane fade">*/}
+	{/*<h3>Menu 1</h3>*/}
+	{/*<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>*/}
+	{/*</div>*/}
+	{/*<div id="IndustrialMetal" className="tab-pane fade">*/}
+	{/*<h3>Menu 1</h3>*/}
+	{/*<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>*/}
+	{/*</div>*/}
+	{/*<div id="CyberDance" className="tab-pane fade">*/}
+	{/*<h3>Menu 1</h3>*/}
+	{/*<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>*/}
+	{/*</div>*/}
+	{/*</div>*/}
+	{/*</div>*/}
+	{/*);*/}
+	{/*};*/}
+	{/*let Music = React.createClass({*/}
+	{/*render: function() {*/}
+	{/*return (*/}
+	{/*<div>*/}
+	{/*<Header/>*/}
+	{/*<MusicContent/>*/}
+	{/*</div>*/}
+	{/*)*/}
+	{/*}*/}
+	{/*});*/}
+	
+	{/*export default Music;*/}
 
 /***/ }
 /******/ ]);

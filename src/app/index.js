@@ -12,7 +12,7 @@ class App extends React.Component {
         return (
                 <Router history={browserHistory}>
                     <Route path="/" component={Mainpage} />
-                    <Route path="music" component={Music} />
+                    <Route path="/music" component={Music} />
                 </Router>
             );
     }

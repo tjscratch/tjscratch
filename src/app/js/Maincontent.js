@@ -1,18 +1,18 @@
 import React from 'react'
 import { getArticles } from './xhr/Articles'
-// import '../css/Maincontent.css';
+import '../css/Maincontent.css';
 
 const Articles = (props) => {
     function playMusic() {
         if (document.getElementById("2").className === "article_right")
         {
-         document.getElementById("2").src="content/images/cyberdj_240x320.gif";
+         document.getElementById("2").src="/app/content/images/cyberdj_240x320.gif";
          document.getElementById("2").className="article_right_gif";
          document.getElementById("music").play();
         }else if (document.getElementById("2").className ==="article_right_gif")
         {
          document.getElementById("2").className="article_right";
-         document.getElementById("2").src="content/images/cyberdj_240x320.png";
+         document.getElementById("2").src="/app/content/images/cyberdj_240x320.png";
          document.getElementById("music").pause();
         }
 
@@ -30,8 +30,8 @@ export class MainContent extends React.Component{
     super();
         this.state = {article: []}
     }
-    componentDidMount () {
-        getArticles().then(results =>{
+    componentDidMount() {
+        getArticles().then(results => {
             this.setState({
                 article: results.data
             })
@@ -44,7 +44,7 @@ export class MainContent extends React.Component{
                 {this.state.article.map(article => {
                     return  <Articles key={article.id} imageUrl={article.imageUrl} Text={article.Text} className={article.class} Id={article.id}/>
                 })}
-                <audio id="music" src="content/Flatline.mp3" type="audio/mpeg"></audio>
+                <audio id="music" src="/app/content/Flatline.mp3" type="audio/mpeg"></audio>
             </div>
         )
     }
