@@ -1,5 +1,5 @@
 {
-  "name": "reactjs-basics",
+  "name": "TJAPP",
   "version": "1.0.0",
   "description": "Some basic ReactJS",
   "main": "index.js",
@@ -11,7 +11,7 @@
   "keywords": [
     "reactjs"
   ],
-  "author": "Maximilian Schwarzmueller",
+  "author": "TJ_SCRATCH",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.15.3",
